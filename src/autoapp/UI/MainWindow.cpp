@@ -42,7 +42,7 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 void MainWindow::shutDownButtonPressed() {
-    system("shutdown");
+    system("shutdown now");
 }
 
 MainWindow::~MainWindow()

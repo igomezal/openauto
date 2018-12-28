@@ -41,7 +41,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
-    shutDownButtonPressed()
+    void shutDownButtonPressed()
 
 signals:
     void exit();

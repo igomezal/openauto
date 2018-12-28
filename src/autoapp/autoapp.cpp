@@ -32,6 +32,7 @@
 #include <f1x/openauto/autoapp/Configuration/Configuration.hpp>
 #include <f1x/openauto/autoapp/UI/MainWindow.hpp>
 #include <f1x/openauto/autoapp/UI/SettingsWindow.hpp>
+#include <f1x/openauto/autoapp/UI/BluetoothWindow.hpp>
 #include <f1x/openauto/autoapp/UI/ConnectDialog.hpp>
 #include <f1x/openauto/Common/Log.hpp>
 
@@ -91,6 +92,9 @@ int main(int argc, char* argv[])
     autoapp::ui::SettingsWindow settingsWindow(configuration);
     settingsWindow.setWindowFlags(Qt::WindowStaysOnTopHint);
 
+    autoapp::ui::BluetoothWindow bluetoothWindow();
+    bluetoothWindow.setWindowFlags(Qt::WindowStaysOnTopHint);
+
     autoapp::configuration::RecentAddressesList recentAddressesList(7);
     recentAddressesList.read();
 
@@ -101,6 +105,7 @@ int main(int argc, char* argv[])
     QObject::connect(&mainWindow, &autoapp::ui::MainWindow::exit, []() { std::exit(0); });
     QObject::connect(&mainWindow, &autoapp::ui::MainWindow::openSettings, &settingsWindow, &autoapp::ui::SettingsWindow::showFullScreen);
     QObject::connect(&mainWindow, &autoapp::ui::MainWindow::openConnectDialog, &connectDialog, &autoapp::ui::ConnectDialog::exec);
+    QObject::connect(&mainWindow, &autoapp::ui::MainWindow::openBluetooth, &bluetoothWindow, &autoapp::ui::BluetoothWindow::showFullScreen);
 
     qApplication.setOverrideCursor(Qt::BlankCursor);
     QObject::connect(&mainWindow, &autoapp::ui::MainWindow::toggleCursor, [&qApplication]() {

@@ -48,6 +48,7 @@ signals:
     void openSettings();
     void toggleCursor();
     void openConnectDialog();
+    void openBluetooth();
 
 private:
     Ui::MainWindow* ui_;

@@ -107,7 +107,7 @@ color: rgb(238, 238, 236);</string>
      <rect>
       <x>10</x>
       <y>440</y>
-      <width>341</width>
+      <width>381</width>
       <height>31</height>
      </rect>
     </property>
@@ -176,7 +176,7 @@ color: rgb(238, 238, 236);</string>
    <widget class="QLabel" name="labelCopyrightsInfoIcon">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>420</x>
       <y>440</y>
       <width>21</width>
       <height>31</height>

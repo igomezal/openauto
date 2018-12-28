@@ -38,7 +38,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui_->pushButtonExit, &QPushButton::clicked, this, &MainWindow::exit);
     connect(ui_->pushButtonToggleCursor, &QPushButton::clicked, this, &MainWindow::toggleCursor);
     connect(ui_->pushButtonWirelessConnection, &QPushButton::clicked, this, &MainWindow::openConnectDialog);
-    connect(ui_->pushButtonShutDown, $QPushButton::clicked, this, SLOT(shutDownButtonPressed()));
+    connect(ui_->pushButtonShutDown, &QPushButton::clicked, this, SLOT(shutDownButtonPressed()));
 }
 
 void MainWindow::shutDownButtonPressed() {

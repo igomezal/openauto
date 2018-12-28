@@ -40,6 +40,11 @@
     <property name="text">
      <string>Cancelar</string>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	color: black;
+}</string>
+    </property>
    </widget>
    <widget class="QPushButton" name="pushButtonDisconnect">
     <property name="geometry">
@@ -52,6 +57,11 @@
     </property>
     <property name="text">
      <string>Desconectar</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	color: black;
+}</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButtonConnect">
@@ -66,6 +76,11 @@
     <property name="text">
      <string>Conectar</string>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	color: black;
+}</string>
+    </property>
    </widget>
    <widget class="QPushButton" name="pushButtonDefault">
     <property name="geometry">
@@ -78,6 +93,11 @@
     </property>
     <property name="text">
      <string>Establecer</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	color: black;
+}</string>
     </property>
    </widget>
    <widget class="QTableWidget" name="tableWidget">
@@ -93,16 +113,36 @@
      <property name="text">
       <string>Dispositivo por defecto</string>
      </property>
+     <property name="styleSheet">
+     <string notr="true">QTableWidget {
+	color: black;
+}</string>
+    </property>
     </column>
     <column>
      <property name="text">
       <string>Nombre del dispositivo</string>
      </property>
+     <property name="styleSheet">
+     <string notr="true">QTableWidget {
+	color: black;
+}</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTableWidget {
+	color: black;
+}</string>
+    </property>
     </column>
     <column>
      <property name="text">
       <string>Identificador del dispositivo</string>
      </property>
+     <property name="styleSheet">
+     <string notr="true">QTableWidget {
+	color: black;
+}</string>
+    </property>
     </column>
    </widget>
    <widget class="QPushButton" name="pushButtonScan">
@@ -116,6 +156,11 @@
     </property>
     <property name="text">
      <string>Escanear</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	color: black;
+}</string>
     </property>
    </widget>
  </widget>

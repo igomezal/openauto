@@ -14,7 +14,9 @@ BluetoothWindow::BluetoothWindow(QWidget *parent)
     : QWidget(parent), ui_(new Ui::BluetoothWindow)
 {
     ui_->setupUi(this);
-    ui_->tableWidget->horizontalHeader()->setStretchLastSection(true);
+    ui_->tableWidget->setColumnWidth(0, ui_->tableWidget->width()/3);
+    ui_->tableWidget->setColumnWidth(1, ui_->tableWidget->width()/3);
+    ui_->tableWidget->setColumnWidth(2, ui_->tableWidget->width()/3);
     connect(ui_->pushButtonCancel, &QPushButton::clicked, this, &BluetoothWindow::close);
 }
 

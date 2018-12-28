@@ -24,6 +24,9 @@ class BluetoothWindow : public QWidget
     explicit BluetoothWindow(QWidget *parent = nullptr);
     ~BluetoothWindow() override;
 
+  private:
+    void scanDevices();
+
     Ui::BluetoothWindow *ui_;
 };
 

@@ -92,7 +92,7 @@ int main(int argc, char* argv[])
     autoapp::ui::SettingsWindow settingsWindow(configuration);
     settingsWindow.setWindowFlags(Qt::WindowStaysOnTopHint);
 
-    autoapp::ui::BluetoothWindow bluetoothWindow();
+    autoapp::ui::BluetoothWindow bluetoothWindow;
     bluetoothWindow.setWindowFlags(Qt::WindowStaysOnTopHint);
 
     autoapp::configuration::RecentAddressesList recentAddressesList(7);

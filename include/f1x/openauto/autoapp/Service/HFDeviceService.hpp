@@ -32,13 +32,13 @@ namespace service
 class HFDeviceService
 {
   public:
-    void getDevices();
-    void pair();
-    void remove();
-    void connect();
-    void disconnect();
-    void info();
-    void removeDevice();
+    std::map<std::string, std::string> getDevices();
+    std::string getDefaultDevice();
+    void pair(std::string bdAddr);
+    void connect(std::string bdAddr);
+    void disconnect(std::string bdAddr);
+    void info(std::string bdAddr);
+    void removeDevice(std::string bdAddr);
 
   private:
     std::string bluetoothHelperPath = "/home/pi/bluetoothctl_helper/";

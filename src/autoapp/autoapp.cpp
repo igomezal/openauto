@@ -36,8 +36,6 @@
 #include <f1x/openauto/autoapp/UI/ConnectDialog.hpp>
 #include <f1x/openauto/Common/Log.hpp>
 
-#include <f1x/openauto/autoapp/Service/HFDeviceService.hpp>
-
 namespace aasdk = f1x::aasdk;
 namespace autoapp = f1x::openauto::autoapp;
 using ThreadPool = std::vector<std::thread>;
@@ -93,9 +91,6 @@ int main(int argc, char* argv[])
     auto configuration = std::make_shared<autoapp::configuration::Configuration>();
     autoapp::ui::SettingsWindow settingsWindow(configuration);
     settingsWindow.setWindowFlags(Qt::WindowStaysOnTopHint);
-
-    autoapp::service::HFDeviceService hfDeviceService;
-    hfDeviceService.getDevices();
 
     autoapp::ui::BluetoothWindow bluetoothWindow;
     bluetoothWindow.setWindowFlags(Qt::WindowStaysOnTopHint);

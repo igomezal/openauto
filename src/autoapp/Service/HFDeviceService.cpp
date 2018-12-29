@@ -39,8 +39,8 @@ namespace autoapp
 namespace service
 {
 
-void HFDeviceService::getDevices(){
-    // std::map <std::string, std::string> devices;
+std::map<std::string, std::string> HFDeviceService::getDevices(){
+    std::map <std::string, std::string> devices;
 
     std::string command = "get_devices.sh";
     std::string fullPath = this->bluetoothHelperPath + command;
@@ -58,37 +58,59 @@ void HFDeviceService::getDevices(){
             _1, std::locale()));
 
     BOOST_FOREACH(const std::string& i, tokens) {
-        std::cout << "'" << i.substr(0,17) << "'" << std::endl;
-        std::cout << "'" << i.substr(18) << "'" << std::endl;
+        devices.insert(std::pair<std::string, std::string>(i.substr(0,17), i.substr(18)));
     }
 
-    //devices.insert(std::pair<std::string, std::string>());
-
-    std::cout << "Hola Adios" << "\n";
+    return devices;
 }
 
-void HFDeviceService::pair(){
-
+std::string getDefaultDevice() {
+    return "Test";
 }
 
-void HFDeviceService::removeDevice(){
+void HFDeviceService::pair(std::string bdAddr)
+{
+    std::string command = "pair.sh " + bdAddr;
+    std::string fullPath = this->bluetoothHelperPath + command;
+    std::string pairResult = this->exec(fullPath.c_str());
 
+    std::cout << pairResult << std::endl;
 }
 
-void HFDeviceService::connect(){
+void HFDeviceService::removeDevice(std::string bdAddr)
+{
+    std::string command = "remove.sh " + bdAddr;
+    std::string fullPath = this->bluetoothHelperPath + command;
+    std::string result = this->exec(fullPath.c_str());
 
+    std::cout << result << std::endl;
 }
 
-void HFDeviceService::disconnect(){
+void HFDeviceService::connect(std::string bdAddr)
+{
+    std::string command = "connect.sh " + bdAddr;
+    std::string fullPath = this->bluetoothHelperPath + command;
+    std::string result = this->exec(fullPath.c_str());
 
+    std::cout << result << std::endl;
 }
 
-void HFDeviceService::info(){
+void HFDeviceService::disconnect(std::string bdAddr)
+{
+    std::string command = "disconnect.sh " + bdAddr;
+    std::string fullPath = this->bluetoothHelperPath + command;
+    std::string result = this->exec(fullPath.c_str());
 
+    std::cout << result << std::endl;
 }
 
-void HFDeviceService::remove(){
+void HFDeviceService::info(std::string bdAddr)
+{
+    std::string command = "info.sh " + bdAddr;
+    std::string fullPath = this->bluetoothHelperPath + command;
+    std::string result = this->exec(fullPath.c_str());
 
+    std::cout << result << std::endl;
 }
 
 std::string HFDeviceService::exec(const char *cmd)

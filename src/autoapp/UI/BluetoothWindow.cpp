@@ -1,5 +1,9 @@
+#include <string>
+
 #include <f1x/openauto/autoapp/UI/BluetoothWindow.hpp>
 #include "ui_bluetoothwindow.h"
+
+#include <f1x/openauto/autoapp/Service/HFDeviceService.hpp>
 
 namespace f1x
 {
@@ -21,7 +25,6 @@ BluetoothWindow::BluetoothWindow(QWidget *parent)
     ui_->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     connect(ui_->pushButtonCancel, &QPushButton::clicked, this, &BluetoothWindow::close);
     this->scanDevices();
-    this->scanDevices();
 }
 
 BluetoothWindow::~BluetoothWindow()
@@ -35,26 +38,31 @@ void BluetoothWindow::scanDevices() {
     // Get Default Device
     // Add to the table
 
-    int row = ui_->tableWidget->rowCount();
-    ui_->tableWidget->insertRow(row);
-    ui_->tableWidget->setItem(row, 0, new QTableWidgetItem());
-    ui_->tableWidget->setItem(row, 1, new QTableWidgetItem());
-    ui_->tableWidget->setItem(row, 2, new QTableWidgetItem());
+    autoapp::service::HFDeviceService hfDeviceService;
+    std::map<std::string, std::string> devices = hfDeviceService.getDevices();
 
-    QString line = "*";
-    QString name = "Iván";
-    QString uuid = "78:45:33...";
+    for(std::map<std::string, std::string>::iterator it=devices.begin(); it!=devices.end(); ++it) {
+        int row = ui_->tableWidget->rowCount();
+        ui_->tableWidget->insertRow(row);
+        ui_->tableWidget->setItem(row, 0, new QTableWidgetItem());
+        ui_->tableWidget->setItem(row, 1, new QTableWidgetItem());
+        ui_->tableWidget->setItem(row, 2, new QTableWidgetItem());
 
-    QTableWidgetItem *first = ui_->tableWidget->item(row,0);
-    QTableWidgetItem *second = ui_->tableWidget->item(row, 1);
-    QTableWidgetItem *third = ui_->tableWidget->item(row, 2);
+        QTableWidgetItem *first = ui_->tableWidget->item(row, 0);
+        QTableWidgetItem *second = ui_->tableWidget->item(row, 1);
+        QTableWidgetItem *third = ui_->tableWidget->item(row, 2);
 
-    if(first)
-        first->setText(line);
-    if(second)
-        second->setText(name);
-    if(third)
-        third->setText(uuid);
+        QString fav = "*";
+        QString name = it->second;
+        QString bdAddr = it->first;
+
+        if (first)
+            first->setText(fav);
+        if (second)
+            second->setText(name);
+        if (third)
+            third->setText(bdAddr);
+    }
 }
 
 } // namespace ui

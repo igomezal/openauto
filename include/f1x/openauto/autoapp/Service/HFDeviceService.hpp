@@ -41,7 +41,8 @@ class HFDeviceService
     void removeDevice();
 
   private:
-    std::string exec(char* cmd);
+    std::string bluetoothHelperPath = "/home/pi/bluetoothctl_helper/";
+    std::string exec(char *cmd);
 };
 
 } // namespace service

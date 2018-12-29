@@ -31,7 +31,7 @@ namespace service
 
 void HFDeviceService::getDevices(){
     std::string devices;
-    devices = this->exec("./get_devices.sh");
+    devices = this->exec(this->bluetoothHelperPath + "get_devices.sh");
     std::cout << "Hola" << devices << "Adios" << "\n";
 }
 

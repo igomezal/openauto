@@ -33,7 +33,7 @@ void HFDeviceService::getDevices(){
     std::string command = "get_devices.sh";
     std::string fullPath = this->bluetoothHelperPath + command;
     std::cout << fullPath << "\n";
-    std::string devices = this->exec("/home/pi/bluetoothctl_helper/get_devices.sh");
+    std::string devices = this->exec(fullPath.c_str());
     std::cout << "Hola" << devices << "Adios" << "\n";
 }
 

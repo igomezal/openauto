@@ -32,7 +32,7 @@ namespace service
 void HFDeviceService::getDevices(){
     std::string devices;
     devices = this->exec("./get_devices.sh");
-    std::cout << devices << "\n";
+    std::cout << "Hola" << devices << "Adios" << "\n";
 }
 
 void HFDeviceService::pair(){

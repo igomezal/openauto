@@ -19,11 +19,15 @@
 #include <string>
 #include <iostream>
 #include <map>
+#include <vector>
+
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/trim.hpp>
 #include <boost/algorithm/string/split.hpp>
+#include <boost/range/algorithm/transform.hpp>
 #include <boost/foreach.hpp>
-#include <vector>
+#include <boost/bind.hpp>
+
 #include <f1x/openauto/autoapp/Service/HFDeviceService.hpp>
 
 namespace f1x
@@ -45,9 +49,13 @@ void HFDeviceService::getDevices(){
 
     boost::trim(devices);
 
-    typedef std::vector<std::string> Tokens;
-    Tokens tokens;
+    std::vector<std::string> tokens;
+
     boost::split(tokens, devices, boost::is_any_of("\n"));
+
+    std::for_each(tokens.begin(), tokens.end(),
+        boost::bind(&boost::trim<std::string>,
+            _1, std::locale()));
 
     BOOST_FOREACH(const std::string& i, tokens) {
         std::cout << "'" << i << "'" << std::endl;

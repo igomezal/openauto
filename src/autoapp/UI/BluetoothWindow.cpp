@@ -43,7 +43,7 @@ void BluetoothWindow::scanDevices() {
     std::ifstream ifs;
     ifs.open("/home/pi/bluetoothctl_helper/device.txt", std::ifstream::in);
     std::string defaultDevice;
-    defaultDevice << ifs;
+    ifs >> defaultDevice;
     ifs.close();
 
     autoapp::service::HFDeviceService hfDeviceService;

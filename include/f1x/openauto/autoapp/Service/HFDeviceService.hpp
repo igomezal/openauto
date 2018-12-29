@@ -42,7 +42,7 @@ class HFDeviceService
 
   private:
     std::string bluetoothHelperPath = "/home/pi/bluetoothctl_helper/";
-    std::string exec(char *cmd);
+    std::string exec(const char *cmd);
 };
 
 } // namespace service

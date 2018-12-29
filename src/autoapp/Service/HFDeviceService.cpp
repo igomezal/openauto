@@ -32,7 +32,7 @@ namespace service
 void HFDeviceService::getDevices(){
     std::string command = "get_devices.sh";
     std::string fullPath = this->bluetoothHelperPath + command;
-    std::cout << fullPath << "\n";
+    std::cout << fullPath << "\n"; 
     std::string devices = this->exec(fullPath.c_str());
     std::cout << "Hola" << devices << "Adios" << "\n";
 }
@@ -61,7 +61,7 @@ void HFDeviceService::remove(){
 
 }
 
-std::string HFDeviceService::exec(char *cmd)
+std::string HFDeviceService::exec(const char *cmd)
 {
     FILE *pipe = popen(cmd, "r");
     if (!pipe)

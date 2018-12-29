@@ -73,12 +73,12 @@ void startIOServiceWorkers(boost::asio::io_service& ioService, ThreadPool& threa
 
 int main(int argc, char* argv[])
 {
-    char[30] defaultDevice;
+    char defaultDevice[30];
     std::ifstream infile;
     infile.open("/home/pi/bluetoothctl_helper/device.txt");
     infile >> defaultDevice;
 
-    std::cout << "Hello" << std:eendl;
+    std::cout << "Hello" << std::endl;
     std::cout << defaultDevice << std::endl;
 
     infile.close();

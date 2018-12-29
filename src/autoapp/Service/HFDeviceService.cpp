@@ -59,7 +59,7 @@ void HFDeviceService::remove(){
 
 }
 
-std::string exec(char *cmd)
+std::string HFDeviceService::exec(char *cmd)
 {
     FILE *pipe = popen(cmd, "r");
     if (!pipe)

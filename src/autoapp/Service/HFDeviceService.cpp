@@ -45,20 +45,21 @@ void HFDeviceService::getDevices(){
     std::string command = "get_devices.sh";
     std::string fullPath = this->bluetoothHelperPath + command;
 
-    std::string devices = this->exec(fullPath.c_str());
+    std::string devicesString = this->exec(fullPath.c_str());
 
-    boost::trim(devices);
+    boost::trim(devicesString);
 
     std::vector<std::string> tokens;
 
-    boost::split(tokens, devices, boost::is_any_of("\n"));
+    boost::split(tokens, devicesString, boost::is_any_of("\n"));
 
     std::for_each(tokens.begin(), tokens.end(),
         boost::bind(&boost::trim<std::string>,
             _1, std::locale()));
 
     BOOST_FOREACH(const std::string& i, tokens) {
-        std::cout << "'" << i << "'" << std::endl;
+        std::cout << "'" << i.substr(0,17) << "'" << std::endl;
+        std::cout << "'" << i.substr(18) << "'" << std::endl;
     }
 
     //devices.insert(std::pair<std::string, std::string>());

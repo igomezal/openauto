@@ -35,17 +35,23 @@ void BluetoothWindow::scanDevices() {
     int row = ui_->tableWidget->rowCount();
     ui_->tableWidget->insertRow(row);
     ui_->tableWidget->setItem(row, 0, new QTableWidgetItem());
+    ui_->tableWidget->setItem(row, 1, new QTableWidgetItem());
+    ui_->tableWidget->setItem(row, 2, new QTableWidgetItem());
 
     QString line = "*";
     QString name = "Iván";
+    QString uuid = "78:45:33...";
 
     QTableWidgetItem *first = ui_->tableWidget->item(row,0);
     QTableWidgetItem *second = ui_->tableWidget->item(row, 1);
+    QTableWidgetItem *third = ui_->tableWidget->item(row, 2);
 
     if(first)
         first->setText(line);
     if(second)
         second->setText(name);
+    if(third)
+        third->setText(uuid);
 }
 
 } // namespace ui

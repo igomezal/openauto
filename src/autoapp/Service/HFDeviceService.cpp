@@ -42,12 +42,12 @@ void HFDeviceService::getDevices(){
     std::string fullPath = this->bluetoothHelperPath + command;
 
     std::string devices = this->exec(fullPath.c_str());
-    
+
     boost::trim(devices);
 
     typedef std::vector<std::string> Tokens;
     Tokens tokens;
-    boost::split(tokens, devices, boost::is_any_of(" "));
+    boost::split(tokens, devices, boost::is_any_of("\n"));
 
     BOOST_FOREACH(const std::string& i, tokens) {
         std::cout << "'" << i << "'" << std::endl;

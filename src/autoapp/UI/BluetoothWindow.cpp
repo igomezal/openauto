@@ -106,7 +106,7 @@ void BluetoothWindow::setDefaultDevice()
 
     QTableWidgetItem *item = ui_->tableWidget->item(index.row(), 2);
 
-    std::cout << item->text().toUtf8().constData() << std:endl;
+    std::cout << item->text().toUtf8().constData() << std::endl;
 }
 
 void BluetoothWindow::removeDevice()

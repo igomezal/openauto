@@ -43,7 +43,7 @@ void BluetoothWindow::scanDevices() {
 
     std::fstream fs;
     fs.open("/home/pi/bluetoothctl_helper/device.txt", std::fstream::in);
-    std:string defaultDevice;
+    std::string defaultDevice;
     defaultDevice << fs;
     fs.close();
 
@@ -63,10 +63,12 @@ void BluetoothWindow::scanDevices() {
         QTableWidgetItem *second = ui_->tableWidget->item(row, 1);
         QTableWidgetItem *third = ui_->tableWidget->item(row, 2);
 
+        QString fav;
+
         if(defaultDevice == it->first) {
-            QString fav = "*";
+            fav = "*";
         } else {
-            QString fav = "";
+            fav = "";
         }
 
         QString name = QString::fromUtf8(it->second.c_str());

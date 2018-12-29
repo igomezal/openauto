@@ -38,7 +38,7 @@ class HFDeviceService
     void connect();
     void disconnect();
     void info();
-    void remove();
+    void removeDevice();
 
   private:
     std::string exec(char* cmd);

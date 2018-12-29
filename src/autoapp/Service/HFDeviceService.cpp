@@ -39,7 +39,7 @@ void HFDeviceService::pair(){
 
 }
 
-void HFDeviceService::remove(){
+void HFDeviceService::removeDevice(){
 
 }
 

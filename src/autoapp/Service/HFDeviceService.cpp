@@ -18,6 +18,7 @@
 
 #include <string>
 #include <iostream>
+#include <f1x/openauto/autoapp/Service/HFDeviceService.hpp>
 
 namespace f1x
 {
@@ -28,54 +29,51 @@ namespace autoapp
 namespace service
 {
 
-class HFDeviceService
+void HFDeviceService::getDevices(){
+    std::string devices;
+    devices = exec("./get_devices.sh");
+    std::cout << devices << "\n";
+}
+
+void HFDeviceService::pair(){
+
+}
+
+void HFDeviceService::remove(){
+
+}
+
+void HFDeviceService::connect(){
+
+}
+
+void HFDeviceService::disconnect(){
+
+}
+
+void HFDeviceService::info(){
+
+}
+
+void HFDeviceService::remove(){
+
+}
+
+std::string exec(char *cmd)
 {
-    void HFDeviceService::getDevices(){
-        std::string devices;
-        devices = exec("./get_devices.sh");
-        std::cout << devices << "\n";
-    }
-
-    void HFDeviceService::pair(){
-
-    }
-
-    void HFDeviceService::remove(){
-
-    }
-
-    void HFDeviceService::connect(){
-
-    }
-
-    void HFDeviceService::disconnect(){
-
-    }
-
-    void HFDeviceService::info(){
-
-    }
-
-    void HFDeviceService::remove(){
-
-    }
-
-    std::string exec(char *cmd)
+    FILE *pipe = popen(cmd, "r");
+    if (!pipe)
+        return "ERROR";
+    char buffer[128];
+    std::string result = "";
+    while (!feof(pipe))
     {
-        FILE *pipe = popen(cmd, "r");
-        if (!pipe)
-            return "ERROR";
-        char buffer[128];
-        std::string result = "";
-        while (!feof(pipe))
-        {
-            if (fgets(buffer, 128, pipe) != NULL)
-                result += buffer;
-        }
-        pclose(pipe);
-        return result;
+        if (fgets(buffer, 128, pipe) != NULL)
+            result += buffer;
     }
-};
+    pclose(pipe);
+    return result;
+}
 
 } // namespace service
 } // namespace autoapp

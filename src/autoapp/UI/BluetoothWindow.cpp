@@ -23,7 +23,7 @@ BluetoothWindow::BluetoothWindow(QWidget *parent)
     ui_->tableWidget->setColumnWidth(2, ui_->tableWidget->width()/3);
     ui_->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui_->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
-    connect(ui_->pushButtonScan, &QPushButton:clicked, this, &BluetoothWindow::scanDevices);
+    connect(ui_->pushButtonScan, &QPushButton::clicked, this, &BluetoothWindow::scanDevices);
     connect(ui_->pushButtonDisconnect, &QPushButton::clicked, this, &BluetoothWindow::disconnectDevice);
     connect(ui_->pushButtonCancel, &QPushButton::clicked, this, &BluetoothWindow::close);
     this->scanDevices();
@@ -68,11 +68,9 @@ void BluetoothWindow::disconnectDevice() {
     QModelIndexList selection = ui_->tableWidget->selectionModel()->selectedRows();
     QModelIndex index = selection.at(0);
 
-    if(index) {
-        QTableWidgetItem item = ui_->tableWidget->item(index.row(), 2);
+    QTableWidgetItem* item = ui_->tableWidget->item(index.row(), 2);
 
-        std::cout << item.text().toUtf8().constData() << std::endl;
-    }
+    std::cout << item->text().toUtf8().constData() << std::endl;
 }
 
 } // namespace ui

@@ -38,6 +38,8 @@
 #include <f1x/openauto/autoapp/UI/ConnectDialog.hpp>
 #include <f1x/openauto/Common/Log.hpp>
 
+#include <f1x/openauto/autoapp/Service/HFDeviceService.hpp>
+
 namespace aasdk = f1x::aasdk;
 namespace autoapp = f1x::openauto::autoapp;
 using ThreadPool = std::vector<std::thread>;
@@ -73,19 +75,20 @@ void startIOServiceWorkers(boost::asio::io_service& ioService, ThreadPool& threa
 
 int main(int argc, char* argv[])
 {
-    char defaultDevice[30];
+    std::string defaultDevice;
     std::ifstream infile;
     infile.open("/home/pi/bluetoothctl_helper/device.txt");
     infile >> defaultDevice;
 
-    std::cout << "Hello" << std::endl;
     std::cout << defaultDevice << std::endl;
 
     infile.close();
 
     // connect
+    autoapp::service::HFDeviceService hfDeviceService;
+    hfDeviceService.connect(defaultDevice);
 
-    libusb_context* usbContext;
+    libusb_context *usbContext;
     if(libusb_init(&usbContext) != 0)
     {
         OPENAUTO_LOG(error) << "[OpenAuto] libusb init failed.";

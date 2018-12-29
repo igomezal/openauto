@@ -69,7 +69,7 @@ void BluetoothWindow::disconnectDevice() {
     QModelIndexList selection = ui_->tableWidget->selectionModel()->selectedRows();
     QModelIndex index = selection.at(0);
 
-    if(index.row() < 0 && index.row() > ui_->tableWidget->rowCount()) {
+    if(!index.isValid()) {
         return;
     }
 

@@ -121,11 +121,11 @@ void BluetoothWindow::setDefaultDevice()
     QTableWidgetItem *item = ui_->tableWidget->item(index.row(), 2);
 
 
-    std::ifstream infile;
-    infile.open("/home/pi/bluetoothctl_helper/device.txt", std::ifstream::trunc);
-    infile << std::string(item->text().toUtf8().constData()) << std::endl;
+    std::ofstream ofile;
+    ofile.open("/home/pi/bluetoothctl_helper/device.txt", std::ofstream::trunc);
+    ofile << item->text().toUtf8().constData() << std::endl;
 
-    infile.close();
+    ofile.close();
 
     this->scanDevices();
 }

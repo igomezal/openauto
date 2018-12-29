@@ -31,7 +31,7 @@ namespace service
 
 void HFDeviceService::getDevices(){
     std::string devices;
-    devices = exec("./get_devices.sh");
+    devices = this->exec("./get_devices.sh");
     std::cout << devices << "\n";
 }
 

@@ -95,7 +95,7 @@ int main(int argc, char* argv[])
     settingsWindow.setWindowFlags(Qt::WindowStaysOnTopHint);
 
     autoapp::service::HFDeviceService hfDeviceService;
-    hfDeviceService->getDevices();
+    hfDeviceService.getDevices();
 
     autoapp::ui::BluetoothWindow bluetoothWindow;
     bluetoothWindow.setWindowFlags(Qt::WindowStaysOnTopHint);

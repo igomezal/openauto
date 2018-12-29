@@ -17,6 +17,8 @@
 */
 
 #include <thread>
+#include <fstream>
+#include <iostream>
 #include <QApplication>
 #include <f1x/aasdk/USB/USBHub.hpp>
 #include <f1x/aasdk/USB/ConnectedAccessoriesEnumerator.hpp>
@@ -71,6 +73,15 @@ void startIOServiceWorkers(boost::asio::io_service& ioService, ThreadPool& threa
 
 int main(int argc, char* argv[])
 {
+    std::string defaultDevice;
+    ifstream infile;
+    infile.open("/home/pi/bluetoothctl_helper/device.txt");
+    infile >> defaultDevice;
+
+    std:cout << defaultDevice << std::endl;
+
+    // connect
+
     libusb_context* usbContext;
     if(libusb_init(&usbContext) != 0)
     {

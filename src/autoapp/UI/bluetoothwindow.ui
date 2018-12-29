@@ -29,140 +29,138 @@
    <string notr="true">background-color: rgb(46, 52, 54); color: rgb(238, 238, 236);</string>
   </property>
   <widget class="QPushButton" name="pushButtonCancel">
-    <property name="geometry">
-     <rect>
-      <x>650</x>
-      <y>410</y>
-      <width>141</width>
-      <height>41</height>
-     </rect>
-    </property>
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>410</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	color: black;
+}</string>
+   </property>
+   <property name="text">
+    <string>Cancelar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonDisconnect">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>150</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	color: black;
+}</string>
+   </property>
+   <property name="text">
+    <string>Desconectar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonConnect">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>100</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	color: black;
+}</string>
+   </property>
+   <property name="text">
+    <string>Conectar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonDefault">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>200</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	color: black;
+}</string>
+   </property>
+   <property name="text">
+    <string>Establecer</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>50</y>
+     <width>621</width>
+     <height>401</height>
+    </rect>
+   </property>
+   <column>
     <property name="text">
-     <string>Cancelar</string>
+     <string>Dispositivo por defecto</string>
     </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
-	color: black;
-}</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButtonDisconnect">
-    <property name="geometry">
-     <rect>
-      <x>650</x>
-      <y>150</y>
-      <width>141</width>
-      <height>41</height>
-     </rect>
-    </property>
+   </column>
+   <column>
     <property name="text">
-     <string>Desconectar</string>
+     <string>Nombre del dispositivo</string>
     </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
-	color: black;
-}</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButtonConnect">
-    <property name="geometry">
-     <rect>
-      <x>650</x>
-      <y>100</y>
-      <width>141</width>
-      <height>41</height>
-     </rect>
-    </property>
+   </column>
+   <column>
     <property name="text">
-     <string>Conectar</string>
+     <string>Identificador del dispositivo</string>
     </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
+   </column>
+  </widget>
+  <widget class="QPushButton" name="pushButtonScan">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>50</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
 	color: black;
 }</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButtonDefault">
-    <property name="geometry">
-     <rect>
-      <x>650</x>
-      <y>200</y>
-      <width>141</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Establecer</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
+   </property>
+   <property name="text">
+    <string>Escanear</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonRemove">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>250</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
 	color: black;
 }</string>
-    </property>
-   </widget>
-   <widget class="QTableWidget" name="tableWidget">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>50</y>
-      <width>621</width>
-      <height>401</height>
-     </rect>
-    </property>
-    <column>
-     <property name="text">
-      <string>Dispositivo por defecto</string>
-     </property>
-     <property name="styleSheet">
-     <string notr="true">QTableWidget {
-	color: black;
-}</string>
-    </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Nombre del dispositivo</string>
-     </property>
-     <property name="styleSheet">
-     <string notr="true">QTableWidget {
-	color: black;
-}</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QTableWidget {
-	color: black;
-}</string>
-    </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Identificador del dispositivo</string>
-     </property>
-     <property name="styleSheet">
-     <string notr="true">QTableWidget {
-	color: black;
-}</string>
-    </property>
-    </column>
-   </widget>
-   <widget class="QPushButton" name="pushButtonScan">
-    <property name="geometry">
-     <rect>
-      <x>650</x>
-      <y>50</y>
-      <width>141</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Escanear</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
-	color: black;
-}</string>
-    </property>
-   </widget>
+   </property>
+   <property name="text">
+    <string>Eliminar</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

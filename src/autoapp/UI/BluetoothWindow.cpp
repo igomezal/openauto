@@ -26,6 +26,9 @@ BluetoothWindow::BluetoothWindow(QWidget *parent)
     ui_->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     connect(ui_->pushButtonScan, &QPushButton::clicked, this, &BluetoothWindow::scanDevices);
     connect(ui_->pushButtonDisconnect, &QPushButton::clicked, this, &BluetoothWindow::disconnectDevice);
+    connect(ui_->pushButtonConnect, &QPushButton::clicked, this, &BluetoothWindow::connectDevice);
+    connect(ui_->pushButtonDefault, &QPushButton::clicked, this, &BluetoothWindow::setDefaultDevice);
+    connect(ui_->pushButtonRemove, &QPushButton::clicked, this, &BluetoothWindow::removeDevice);
     connect(ui_->pushButtonCancel, &QPushButton::clicked, this, &BluetoothWindow::close);
     this->scanDevices();
 }
@@ -66,16 +69,58 @@ void BluetoothWindow::scanDevices() {
 }
 
 void BluetoothWindow::disconnectDevice() {
+    if (!ui_->tableWidget->selectionModel()->hasSelection())
+        return;
+
+    autoapp::service::HFDeviceService hfDeviceService;
     QModelIndexList selection = ui_->tableWidget->selectionModel()->selectedRows();
     QModelIndex index = selection.at(0);
 
-    if(!index.isValid()) {
-        return;
-    }
-
     QTableWidgetItem* item = ui_->tableWidget->item(index.row(), 2);
 
-    std::cout << item->text().toUtf8().constData() << std::endl;
+    hfDeviceService.disconnect(item->text().toUtf8().constData());
+}
+
+void BluetoothWindow::connectDevice()
+{
+    if (!ui_->tableWidget->selectionModel()->hasSelection())
+        return;
+
+    autoapp::service::HFDeviceService hfDeviceService;
+    QModelIndexList selection = ui_->tableWidget->selectionModel()->selectedRows();
+    QModelIndex index = selection.at(0);
+
+    QTableWidgetItem *item = ui_->tableWidget->item(index.row(), 2);
+
+    hfDeviceService.pair(item->text().toUtf8().constData());
+}
+
+void BluetoothWindow::setDefaultDevice()
+{
+    if (!ui_->tableWidget->selectionModel()->hasSelection())
+        return;
+
+    autoapp::service::HFDeviceService hfDeviceService;
+    QModelIndexList selection = ui_->tableWidget->selectionModel()->selectedRows();
+    QModelIndex index = selection.at(0);
+
+    QTableWidgetItem *item = ui_->tableWidget->item(index.row(), 2);
+
+    std::cout << item->text().toUtf8().constData() << std:endl;
+}
+
+void BluetoothWindow::removeDevice()
+{
+    if (!ui_->tableWidget->selectionModel()->hasSelection())
+        return;
+
+    autoapp::service::HFDeviceService hfDeviceService;
+    QModelIndexList selection = ui_->tableWidget->selectionModel()->selectedRows();
+    QModelIndex index = selection.at(0);
+
+    QTableWidgetItem *item = ui_->tableWidget->item(index.row(), 2);
+
+    hfDeviceService.removeDevice(item->text().toUtf8().constData());
 }
 
 } // namespace ui

@@ -1,6 +1,6 @@
 #include <string>
 #include <iostream>
-#include <fstream>
+#include <ifstream>
 
 #include <f1x/openauto/autoapp/UI/BluetoothWindow.hpp>
 #include "ui_bluetoothwindow.h"
@@ -40,12 +40,11 @@ BluetoothWindow::~BluetoothWindow()
 }
 
 void BluetoothWindow::scanDevices() {
-
-    std::fstream fs;
-    fs.open("/home/pi/bluetoothctl_helper/device.txt", std::fstream::in);
+    std::ifstream ifs;
+    ifs.open("/home/pi/bluetoothctl_helper/device.txt", std::ifstream::in);
     std::string defaultDevice;
-    defaultDevice << fs;
-    fs.close();
+    defaultDevice << ifs;
+    ifs.close();
 
     autoapp::service::HFDeviceService hfDeviceService;
     std::map<std::string, std::string> devices = hfDeviceService.getDevices();
@@ -122,8 +121,8 @@ void BluetoothWindow::setDefaultDevice()
     QTableWidgetItem *item = ui_->tableWidget->item(index.row(), 2);
 
 
-    std::fstream infile;
-    infile.open("/home/pi/bluetoothctl_helper/device.txt", std::fstream::trunc);
+    std::ifstream infile;
+    infile.open("/home/pi/bluetoothctl_helper/device.txt", std::ifstream::trunc);
     infile << item->text().toUtf8().constData() << std::endl;
 
     infile.close();

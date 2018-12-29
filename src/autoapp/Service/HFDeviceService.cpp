@@ -18,6 +18,11 @@
 
 #include <string>
 #include <iostream>
+#include <map>
+#include <boost/algorithm/string/classification.hpp>
+#include <boost/algorithm/string/split.hpp>
+#include <boost/foreach.hpp>
+#include <vector>
 #include <f1x/openauto/autoapp/Service/HFDeviceService.hpp>
 
 namespace f1x
@@ -30,11 +35,24 @@ namespace service
 {
 
 void HFDeviceService::getDevices(){
+    std::map <std::string, std::string> devices;
+
     std::string command = "get_devices.sh";
     std::string fullPath = this->bluetoothHelperPath + command;
-    std::cout << fullPath << "\n"; 
+
     std::string devices = this->exec(fullPath.c_str());
-    std::cout << "Hola" << devices << "Adios" << "\n";
+
+    typedef std::vector<std::string> Tokens;
+    Tokens tokens;
+    boost::split(tokens, devices, boost::is_any_of(" "));
+
+    BOOST_FOREACH(const std::string& i, tokens) {
+        std::cout << "'" << i << "'" << std::endl;
+    }
+
+    //devices.insert(std::pair<std::string, std::string>());
+
+    std::cout << "Hola Adios" << "\n";
 }
 
 void HFDeviceService::pair(){

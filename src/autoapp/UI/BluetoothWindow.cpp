@@ -123,7 +123,7 @@ void BluetoothWindow::setDefaultDevice()
 
     std::ifstream infile;
     infile.open("/home/pi/bluetoothctl_helper/device.txt", std::ifstream::trunc);
-    infile << item->text().toUtf8().constData() << std::endl;
+    infile << std::string(item->text().toUtf8().constData()) << std::endl;
 
     infile.close();
 

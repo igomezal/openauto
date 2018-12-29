@@ -35,7 +35,7 @@ namespace service
 {
 
 void HFDeviceService::getDevices(){
-    std::map <std::string, std::string> devices;
+    // std::map <std::string, std::string> devices;
 
     std::string command = "get_devices.sh";
     std::string fullPath = this->bluetoothHelperPath + command;

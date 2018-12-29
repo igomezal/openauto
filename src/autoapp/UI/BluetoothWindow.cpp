@@ -53,8 +53,8 @@ void BluetoothWindow::scanDevices() {
         QTableWidgetItem *third = ui_->tableWidget->item(row, 2);
 
         QString fav = "*";
-        QString name = it->second;
-        QString bdAddr = it->first;
+        QString name = QString::fromUtf8(it->second.c_str());
+        QString bdAddr = QString::fromUtf8(it->first.c_str());
 
         if (first)
             first->setText(fav);

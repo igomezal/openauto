@@ -17,7 +17,7 @@ BluetoothWindow::BluetoothWindow(QWidget *parent)
     ui_->tableWidget->setColumnWidth(0, ui_->tableWidget->width()/3);
     ui_->tableWidget->setColumnWidth(1, ui_->tableWidget->width()/3);
     ui_->tableWidget->setColumnWidth(2, ui_->tableWidget->width()/3);
-    ui_->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRow s);
+    ui_->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui_->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     connect(ui_->pushButtonCancel, &QPushButton::clicked, this, &BluetoothWindow::close);
     this->scanDevices();

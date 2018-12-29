@@ -69,11 +69,13 @@ void BluetoothWindow::disconnectDevice() {
     QModelIndexList selection = ui_->tableWidget->selectionModel()->selectedRows();
     QModelIndex index = selection.at(0);
 
+    if(index.row() < 0 && index.row() > ui_->tableWidget->rowCount()) {
+        return;
+    }
+
     QTableWidgetItem* item = ui_->tableWidget->item(index.row(), 2);
 
-    if(item) {
-        std::cout << item->text().toUtf8().constData() << std::endl;
-    }
+    std::cout << item->text().toUtf8().constData() << std::endl;
 }
 
 } // namespace ui

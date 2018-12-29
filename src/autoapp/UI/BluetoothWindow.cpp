@@ -71,7 +71,9 @@ void BluetoothWindow::disconnectDevice() {
 
     QTableWidgetItem* item = ui_->tableWidget->item(index.row(), 2);
 
-    std::cout << item->text().toUtf8().constData() << std::endl;
+    if(item) {
+        std::cout << item->text().toUtf8().constData() << std::endl;
+    }
 }
 
 } // namespace ui

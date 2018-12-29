@@ -26,6 +26,7 @@ class BluetoothWindow : public QWidget
 
   private:
     void scanDevices();
+    void disconnectDevice();
 
     Ui::BluetoothWindow *ui_;
 };

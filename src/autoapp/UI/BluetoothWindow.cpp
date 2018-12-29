@@ -23,6 +23,8 @@ BluetoothWindow::BluetoothWindow(QWidget *parent)
     ui_->tableWidget->setColumnWidth(2, ui_->tableWidget->width()/3);
     ui_->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui_->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+    connect(ui_->pushButtonScan, &QPushButton:clicked, this, &BluetoothWindow::scanDevices);
+    connect(ui_->pushButtonDisconnect, &QPushButton::clicked, this, &BluetoothWindow::disconnectDevice);
     connect(ui_->pushButtonCancel, &QPushButton::clicked, this, &BluetoothWindow::close);
     this->scanDevices();
 }
@@ -33,13 +35,10 @@ BluetoothWindow::~BluetoothWindow()
 }
 
 void BluetoothWindow::scanDevices() {
-    // Scan
-    // Get Devices
-    // Get Default Device
-    // Add to the table
-
     autoapp::service::HFDeviceService hfDeviceService;
     std::map<std::string, std::string> devices = hfDeviceService.getDevices();
+
+    ui_->tableWidget->setRowCount(0);
 
     for(std::map<std::string, std::string>::iterator it=devices.begin(); it!=devices.end(); ++it) {
         int row = ui_->tableWidget->rowCount();
@@ -62,6 +61,17 @@ void BluetoothWindow::scanDevices() {
             second->setText(name);
         if (third)
             third->setText(bdAddr);
+    }
+}
+
+void BluetoothWindow::disconnectDevice() {
+    QModelIndexList selection = ui_->tableWidget->selectionModel()->selectedRows();
+    QModelIndex index = selection.at(0);
+
+    if(index) {
+        QTableWidgetItem item = ui_->tableWidget->item(index.row(), 2);
+
+        std::cout << item.text().toUtf8().constData() << std::endl;
     }
 }
 

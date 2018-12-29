@@ -41,7 +41,9 @@ void HFDeviceService::getDevices(){
     std::string command = "get_devices.sh";
     std::string fullPath = this->bluetoothHelperPath + command;
 
-    std::string devices = trim(this->exec(fullPath.c_str()));
+    std::string devices = this->exec(fullPath.c_str());
+    
+    boost::trim(devices);
 
     typedef std::vector<std::string> Tokens;
     Tokens tokens;

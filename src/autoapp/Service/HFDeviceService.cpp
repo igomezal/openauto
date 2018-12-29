@@ -20,6 +20,7 @@
 #include <iostream>
 #include <map>
 #include <boost/algorithm/string/classification.hpp>
+#include <boost/algorithm/string/trim.hpp>
 #include <boost/algorithm/string/split.hpp>
 #include <boost/foreach.hpp>
 #include <vector>
@@ -40,7 +41,7 @@ void HFDeviceService::getDevices(){
     std::string command = "get_devices.sh";
     std::string fullPath = this->bluetoothHelperPath + command;
 
-    std::string devices = this->exec(fullPath.c_str());
+    std::string devices = trim(this->exec(fullPath.c_str()));
 
     typedef std::vector<std::string> Tokens;
     Tokens tokens;
